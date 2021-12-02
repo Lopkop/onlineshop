@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+
+{% block title %}Shopping Cart{% endblock title %}
+
+{% block content %}
+{% for item in shopping_items %}
+<div>
+    {% if item.user == user %}
+    <div>
+        <p>
+        <h3>{{ item }}</h3></p>
+        <p>Category: {{ item.product.category }}</p>
+        <a href="{% url 'product' item.product.id %}">read more</a>
+        <p>Price: {{ item.product.price }}</p>
+        <form method="post" action="{% url 'remove_from_shopping_cart' item.id %}">
+            {% csrf_token %}
+            <button class="btn btn-danger">Remove</button>
+        </form>
+        <form method="post" action="{% url 'buy_item' item.id %}">
+            {% csrf_token %}
+            <button class="btn btn-success">Buy</button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock content %}

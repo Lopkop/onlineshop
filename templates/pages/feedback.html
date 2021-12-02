@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<p>hello <b>{{ user.username }}</b> leave your feedback about our company</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+</form>
+
+{% endblock content %}

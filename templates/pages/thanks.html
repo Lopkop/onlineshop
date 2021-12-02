@@ -1,0 +1,7 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<p>Thanks for your feedback, we appreciate your suggestions <b>{{ user.username }}</b>.</p>
+
+<a href="{% url 'home' %}"><- return back</a><br>
+{% endblock content %}

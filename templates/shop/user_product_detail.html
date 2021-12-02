@@ -1,0 +1,27 @@
+{% extends '_base.html' %}
+
+{% block title %}{{ product }}{% endblock title %}
+
+{% block content %}
+<div>
+    <p>
+    <h3>{{ product }}</h3></p>
+    <p>Category: {{ product.category }}</p>
+    <div>
+        <p>
+            {{ product.description }}
+        </p>
+    </div>
+    <p>Price: {{ product.price }}</p>
+    <a href="{% url 'edit_product' product.id %}">
+        <button class="btn btn-outline-warning">Edit</button>
+    </a>
+    <br>
+    <br>
+    <form method="post" action="{% url 'remove_product' product.id %}">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger">Remove</button>
+    </form>
+
+</div>
+{% endblock content %}

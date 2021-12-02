@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+
+{% block title %}{{ product }}{% endblock title %}
+
+{% block content %}
+<div>
+    <p>
+    <h3>{{ product }}</h3></p>
+    <p>Category: {{ product.category }}</p>
+    <div>
+        <p>
+            {{ product.description }}
+        </p>
+    </div>
+    <p>Price: {{ product.price }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-outline-success">Add to shopping cart</button>
+    </form>
+
+</div>
+{% endblock content %}

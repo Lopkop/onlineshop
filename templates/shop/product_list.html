@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block title %}List of Products{% endblock title %}
+
+{% block content %}
+<h1>List of Products</h1>
+
+{% for product in products %}
+<div>
+    <p><h3>{{ product }}</h3></p>
+    <p>Category: {{ product.category }}</p>
+    <a href="{% url 'product' product.id %}">read more</a>
+    <p>Price: {{ product.price }}</p>
+    <form method="post" action="{% url 'product' product.id %}">
+        {% csrf_token %}
+        <button class="btn btn-outline-success">Add to shopping cart</button>
+    </form>
+</div>
+{% endfor %}
+
+{% endblock content %}

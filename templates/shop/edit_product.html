@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit product{% endblock title %}
+
+{% block content %}
+<!--<div>-->
+<!--    <label for="title">Title</label>-->
+<!--    <input id="title" type="text" value="{{ product.title }}">-->
+<!--</div>-->
+<!--<div>-->
+<!--    <label for="category">Category:</label>-->
+<!--    <select id="category" name="category">-->
+<!--        <option value="{{ product.category }}" selected>{{ product.category }}</option>-->
+
+<!--        <option value="books">books</option>-->
+<!--        <option value="electronics">electronics</option>-->
+<!--        <option value="home_appliances">home_appliances</option>-->
+<!--        <option value="equipment">equipment</option>-->
+<!--        <option value="cars">cars</option>-->
+<!--        <option value="other">other</option>-->
+<!--    </select>-->
+<!--</div>-->
+<!--<div>-->
+<!--    Description: <textarea cols="30" rows="10">{{ product.description }}</textarea>-->
+<!--</div>-->
+<!--<div>-->
+<!--    price: <input type="number" value="{{ product.price }}">-->
+<!--</div>-->
+<!--<br>-->
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button class="btn btn-outline-success">Save</button>
+</form>
+
+
+{% endblock content %}

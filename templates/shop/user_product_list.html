@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+
+{% block title %}Your products{% endblock title %}
+
+{% block content %}
+
+<a href="{% url 'add_new_product' %}"><b>Create new product</b></a>
+
+<h1>Your products</h1>
+
+{% for product in products %}
+<div>
+    <p>
+    <h3>{{ product }}</h3>
+    </p>
+    <p>Category: {{ product.category }}</p>
+    <a href="{% url 'setting_product' product.id %}">settings</a>
+    <p>Price: {{ product.price }}</p>
+    <form method="post" action="{% url 'product' product.id %}">
+        {% csrf_token %}
+        <button class="btn btn-outline-success">Add to shopping cart</button>
+    </form>
+</div>
+{% endfor %}
+
+{% endblock content %}
